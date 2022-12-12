@@ -1,22 +1,25 @@
 <?php
 
-require_once __DIR__ . "/Models/Animal.php";
+require_once __DIR__ . "/Category.php";
 
-echo "ciao";
 class Product
 {
     public $name;
     public $price;
-    public $animals;
+    public $category;
+    public $type;
+    public $poster;
 
     /**
      * costruttore per l'istanza Prodotto
      */
-    public function __construct(string $name, float $price, string $animals)
+    public function __construct(string $name, float $price, Category $category, string $type, string $poster)
     {
         $this->name = $name;
         $this->price = $price;
-        $this->animals = $animals;
+        $this->category = $category;
+        $this->type = $type;
+        $this->poster = $poster;
     }
 
     /**
@@ -24,9 +27,6 @@ class Product
      */
     public function getDetails()
     {
-        return "Nome Prodotto: {$this->name}; Prezzo: {$this->price} €; Consigliato per: {$this->animals}";
+        return "Nome Prodotto: {$this->name}; Prezzo: {$this->price} €; Consigliato per: {$this->category->name}; Tipo: {$this->type}";
     }
 }
-
-$acana = new Product("Acana", 13.99, "dog");
-var_dump($acana);
